@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script src="jquery-2.1.0.min.js"></script>
+	<script language="javascript" type="text/javascript" src="jquery.flot.js"></script>
+  <script src="blink.js"></script>
+  <script src="ocanvas.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+  <div id="container">
+    <label>
+      Port:
+      <select id="port-picker"></select>
+    </label>
+
+    <label>
+      Status:
+      <span id="status">Loading</span>
+    </label>
+
+    <label>
+      Manuals:
+      <div class="btn-group">
+				<button class="btn" id="Left">Left</button>
+				<button class="btn" id="Right">Right</button>
+				<button class="btn" id="Blue">Blue</button>
+				<button class="btn" id="Red">Red</button>
+				<button class="btn" id="Value">Value</button>
+			</div>
+    </label>
+    <label>
+      Auto:
+      <div class="btn-group">
+      	<button class="btn btn-success" id="Calibrate">Calibrate</button>
+      	<button class="btn btn-success" id="Move">Move to blue</button>
+      	<button class="btn btn-success" id="Record">Record</button>
+			</div>
+    </label>
+
+    <label>
+      Blink Count:
+      <span id="blinkCount">0</span>
+    </label>
+
+    <div id="image">
+    	<canvas id="canvas" style="border:1px solid #c3c3c3" width="250px"; height="250px">
+				Your browser does not support the HTML5 canvas tag.
+			</canvas>
+    </div>
+    
+    <div id="calib"></div>
+    <div id="measure"></div>
+    <canvas id="absorbance" style="border:1px solid #c3c3c3" width="100%"; height="250px">
+				Your browser does not support the HTML5 canvas tag.
+		</canvas>
+  </div>
+
+</body>
+</html>
