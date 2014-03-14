@@ -1,0 +1,80 @@
+img.full-size {
+    width:100%
+}
+
+body {
+    min-width: 100px;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #eee;
+}
+
+img{
+    border-radius:12.5px;
+}
+
+img.half-size {
+   width: 49%
+}
+
+.centered {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.threeQuarters-size {
+    width: 75%;
+    height: auto;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px; height: 0; overflow: hidden;
+    text-align: center;
+}
+ 
+.video-container iframe,
+.video-container object,
+.video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 75%;
+    height: 100%;
+}
+
+.title {
+    font-family: "Helvetica", Verdana, serif;
+    font-size: 20px;
+    display: block;
+    padding-top: 100px;
+    text-align: right;
+    border-bottom-width: 5px;
+    border-bottom-color: #000;
+    border-bottom-style: solid;
+    background-color: #fff;
+    border-radius: 5px
+}
+
+h2 {
+    text-align: center;
+}
+
+h3 {
+    text-decoration: underline;
+}
+
+.recap {
+    display: block;
+    float:left;
+}
+
+.recaps {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    display: block;
+}

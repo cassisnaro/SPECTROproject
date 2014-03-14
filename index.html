@@ -1,0 +1,90 @@
+<html lang="en">
+    <head>
+        <LINK href="style.css" rel="stylesheet" type="text/css">
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            tex2jax: { inlineMath: [['$','$'],['\\(','\\)']] }
+          });
+        </script>
+
+        <script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div class="title">The making of a spectrograph</div>
+        <p class="abstract">In this project we are going to build a simplistic spectrograph based on a an arduino and reusing a printer's stepper motor.</p>
+        <div class="recaps">
+            <div class="half-size recap centered">
+                <h3>What we need</h3>
+                <ul>
+                    <li>1 arduino board</li>
+                    <li>1 stepper motor</li>
+                    <li>1 driver for stepper motors</li>
+                    <li>1 power supply</li>
+                    <li>1 diffraction grating</li>
+                    <li>1 operational amplifier</li>
+                </ul>
+            </div>
+            <div class="half-size recap">
+                <h3>What we need</h3>
+                <ul>
+                    <li>1 arduino board</li>
+                    <li>1 stepper motor</li>
+                    <li>1 driver for stepper motors</li>
+                    <li>1 power supply</li>
+                    <li>1 diffraction grating</li>
+                    <li>1 operational amplifier</li>
+                </ul>
+            </div>
+        </div>
+        
+        <h2>The key idea</h2>
+        <p class="explanation">As the Wikipedia explains <em class="wikipedia">A quantum mechanical system or particle that is bound—that is, confined spatially—can only take on certain discrete values of energy.</em> Thanks to the <strong>Planck constant</strong>, we know that this discrete values are related to <strong>frequencies of light</strong>. In other words, if we were able to measure which frequencies of light are <strong>filtered</strong> by a given <strong>chemical compound</strong>, we would be able to identify it, and even get an insight on the <strong>concentrarion</strong>.</p>
+        <p>In order to do this measures we will present light of different frequencies and measure how much light actually gets to a <strong>light intensity sensor</strong>. We will need to compare this result with a <strong>calibration value</strong> which will be the light we got without any filtering compound.</p>
+        <p>Let us take a look at a very schematic diagramm of the building </p>
+        <img class="half-size centered" src="https://lh4.googleusercontent.com/-p2m1k06yln0/UyLVnrr3leI/AAAAAAAAAB0/rQI4ThOTfdk/w703-h427-no/diagrama+basic.jpg">
+        <h2>The making</h2>
+        <h3>Hardware</h3>
+        <p>It is clear that the challenge is in building the <strong>light source</strong>, because we need to be able to select the frequency. RGB leds are a lie, a construction with a laser and a selectable frequency is too expensive, we are only left with <strong>diffracting</strong> white light, and controlling which frequency is travelling towards the sensor.</p>
+        <p>As we saw in our school days, diffracting is possible with a <strong>prism</strong>. This is not the solution we decided to take, we prefered a <strong>diffraction grating</strong> because:</p>
+        <ol>
+            <li>Prisms are heavier</li>
+            <li>We obtain a bigger diffraction angle with the grating</li>
+        </ol>
+        <p>In order to select the frequence we will be turning the diffraction grating using a <strong>stepper motor</strong>. Of course we need to control the tension at the coils of the motor, and for that we will use a <strong>driver</strong>: we will just indicate the direction with a binary value, and send a pulse for each required movement. The actual power will not be delivered through the Arduino, this would be certainly too much current, we will use a current generator from the laboratory</p>
+        <img class="half-size centered" src="https://lh5.googleusercontent.com/-9fjkdRQbWFs/UyLK10S4wYI/AAAAAAAABaw/DL3s3t1cnDI/w741-h556-no/IMG_20140314_102431.jpg">
+        <p>We need to attach the diffraction grating to the motor's rotor, this might be achievable with some bluetag, but we prefered to 3D-print a piece for this:</p>
+        <img class="half-size centered" src="https://lh4.googleusercontent.com/-t50DDm-D4fg/UyH9HF7xI3I/AAAAAAAABXg/2bpyJGRE97A/w741-h556-no/IMG_20140311_185523.jpg">
+        <p>As we can see in this video we gain control over which frequency arrives at the light sensor. Theoretically, we then just have to record the values for the calibration, then add a sample and take the measures.</p>
+        <div class="centered video-container">
+            <iframe class="centered" src="http://www.youtube.com/embed/LNycPGXNRyQ" frameborder="0" width="560" height="315"></iframe>
+        </div>
+        <p>And now a clearer view of the final construction</p>
+        <img class="half-size centered" src="https://lh4.googleusercontent.com/-X8Fy2IFzT_o/UyH9HA_fX2I/AAAAAAAABXg/_LYA_lDec6U/w741-h556-no/IMG_20140312_151300.jpg">
+        <h3>Software</h3>
+        <p>For the software side we propose a google chrome app: we can easily write an interractive interface and use the serial api provided for those apps. In our model the arduino is merely used to move the motor, and send the recorded values. We shared the code we used in a <a href="http://www.google.com" >git reposiroty</a>.</p>
+        <h2>The difficulties</h2>
+        <p>We had to work with the following constraints:</p>
+        <ul>
+            <li>Not be more than 25€ expensive</li>
+            <li>Being able to carry the building</li>
+            <li>Respect the deadline of 14 March 2014</li>
+        </ul>
+        <p>The light sensor does not make the difference between ambiental light and the diffracted light, we therefore need to minimyze the ambiental light: by masking the leds of the arduino board and creating a box to prevent external light to get in.</p>
+        <div class="double-image">
+            <img class="half-size" src="https://lh5.googleusercontent.com/-0WzLlwgLNDw/UyLKna_TqAI/AAAAAAAABa4/MXMWbwNRkl4/w320-h240-no/IMG_20140314_102330.jpg">
+            <img class="half-size" src="https://lh4.googleusercontent.com/-xFQf58G474A/UyH9HJNwH5I/AAAAAAAABXg/dlhShSxht6w/w320-h240-no/IMG_20140312_162403.jpg">
+        </div>
+        <p>But there is still a lot of noise due to diffused light inside the box. We need to amplify in order to see a difference: here is where the operational amplifier comes into the game. We selected the values of the amplification in order to not overflow the limit of 5V of the Analog to Digital converter: we tested the photodiode and determine the values based on the formula: $V_{out}=(1+\frac{R_2}{R_1})V_{in}$, $R_1$ and $R_2$ being the resistors of the following circuit:</p>
+        <img class="half-size centered" src="https://lh3.googleusercontent.com/-_c2guPWz__c/UyLTXDhnoJI/AAAAAAAAABM/GsoCXHqfs8c/w568-h379-no/schema.jpg">
+            
+        <p>This circuit grants us an amplification of 8 times the power supplied by the photodiode. The actual gain value due the resistance tolerances is almost 10. Since we had to take every day the box apart, the actual values of the ambient light varied and we were not able to place the op-amp in a situation where it could just amplify the difference, i.e. the increment of light induced by the spectrum.</p>
+        <p>We will take a glance at what we obtained. First of all the case without any probe:</p>
+        <img class="threeQuarters-size centered crop" src="https://lh6.googleusercontent.com/Qg2wJMfhb0UMKF4xViOBuUiYMJlWzoP4VZ6XZI2WfsU=w643-h107-no">
+        <p>We see how the perceived intensity increases when the spectrum travels infront of sensor. We deduce the received frequency assuming that it varies linearly with the step of the motor. Again because the disposition of the elements changed at each time, we could not build a better model. We can also see that the sensor itself has different sensibilities, but thanks to the calibration we can reduce this effect.</p>
+        <p> We will now present the case of the spectrum when we analyze cupper sulfate, with its caracteristic blue color.</p>
+        <img class="threeQuarters-size centered crop" src="https://lh4.googleusercontent.com/OOEo6AGx-56LFOxo4BesrWFt6vlCzn613elAuBMEvMM=w639-h103-no"> 
+        <p>Sadly the scaling of the plot failed so the label of the x axe are wrong. Nevertheless we can see how we get a pick in the blue colors and then a decay in the rest of the spectre. And now we can see another problem, because we have a new medium in the box, we have added diffusion to the light: we are increasing the noise, this is why a real minimum takes longer to appear.</p>
+    </body>
+</html>
